@@ -13,12 +13,13 @@ const StyledForm = styled.form`
   align-items: center;ś
 `;
 
-const LoginFrom = () => (
+const RegisterForm = () => (
   <StyledForm>
     <Input type="text" placeholder="nazwa gracza" />
+    <Input type="email" placeholder="email" />
     <Input type="password" placeholder="hasło" />
-    <Button type="button">Zaloguj się!</Button>
+    <Button type="button">Zarejestruj się!</Button>
   </StyledForm>
 );
 
-export default LoginFrom;
+export default RegisterForm;

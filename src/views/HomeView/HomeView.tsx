@@ -1,5 +1,8 @@
+import { useState } from "react";
 import styled from "styled-components";
+import Button from "../../components/common/Button";
 import LoginForm from "../../components/LoginForm";
+import RegisterForm from "../../components/RegisterForm";
 
 const StyledContainer = styled.div`
   display: flex;
@@ -20,14 +23,37 @@ const StyledHeader = styled.header`
   margin-bottom: 150px;
 `;
 
-const HomeView = () => (
-  <>
-    <StyledHeader>Witaj w Elgridii przybyszu!</StyledHeader>
-    <StyledContainer>
-      <LoginForm />
-      <p>Don't have account? sign up!</p>
-    </StyledContainer>
-  </>
-);
+enum FormType {
+  REGISTER = "REGISTER",
+  LOGIN = "LOGIN",
+}
+
+const HomeView = () => {
+  const [shownForm, setShownForm] = useState(FormType.LOGIN);
+  return (
+    <>
+      <StyledHeader>Witaj w Elgridii przybyszu!</StyledHeader>
+      {shownForm === FormType.LOGIN ? (
+        <StyledContainer>
+          <LoginForm />
+          <Button
+            small
+            secondary
+            onClick={() => setShownForm(FormType.REGISTER)}
+          >
+            Nie masz jeszcze konta? Zarejestruj się!
+          </Button>
+        </StyledContainer>
+      ) : (
+        <StyledContainer>
+          <RegisterForm />
+          <Button small secondary onClick={() => setShownForm(FormType.LOGIN)}>
+            Masz konto? Zaloguj się!
+          </Button>
+        </StyledContainer>
+      )}
+    </>
+  );
+};
 
 export default HomeView;
