@@ -10,6 +10,10 @@
     "@types/node": "^16.18.3",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.4.3",
@@ -20,6 +24,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "dev-backend": "nodemon backend/server.ts",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -44,6 +49,9 @@
     ]
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.26"
+    "@types/bcrypt": "^5.0.0",
+    "@types/styled-components": "^5.1.26",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1"
   }
 }
