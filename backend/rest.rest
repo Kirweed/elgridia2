@@ -15,3 +15,17 @@ Content-Type: application/json
     "username": "test",
     "password": "test123"
 }
+
+###
+
+GET http://localhost:8000/auth/test
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE2NzY0NzU5NDUsImV4cCI6MTY3NjQ3NTk2MH0.Qu2kuFbdFMxxx0_N_A1FnYIEpK6B1z1dl1EXPsjrDD0
+
+###
+
+POST http://localhost:8000/auth/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE2NzY0NzY3MzF9.-uvvt2qinPTZwxSzEigEaVtxMm1KNz-0Di51IuBKGUA"
+}
