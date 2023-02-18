@@ -1,13 +1,10 @@
-import { BrowserRouter } from "react-router-dom";
-import { Routes, Route } from "react-router";
-import HomeView from "./views/HomeView";
+import { useAuth } from "./auth";
+import AuthNavigate from "./routing/AuthNavigate";
+import UnauthNavigate from "./routing/UnauthNavigate";
 
-const App = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<HomeView />} />
-    </Routes>
-  </BrowserRouter>
-);
+const App = () => {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? <AuthNavigate /> : <UnauthNavigate />;
+};
 
 export default App;

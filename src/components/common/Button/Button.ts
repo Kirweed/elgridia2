@@ -1,8 +1,16 @@
 import styled from "styled-components";
 
-const Button = styled.button<{ small?: boolean; secondary?: boolean }>`
-  background-color: ${({ secondary, theme }) =>
-    secondary ? theme.colors.grey : theme.colors.blue};
+const Button = styled.button<{
+  small?: boolean;
+  secondary?: boolean;
+  error?: boolean;
+}>`
+  background-color: ${({ secondary, error, theme }) =>
+    secondary
+      ? theme.colors.grey
+      : error
+      ? theme.colors.error
+      : theme.colors.blue};
   border: 1px solid white;
   border-radius: 5px;
   color: ${({ secondary, theme }) =>

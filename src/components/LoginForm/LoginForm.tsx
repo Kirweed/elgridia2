@@ -1,4 +1,6 @@
+import { useState } from "react";
 import styled from "styled-components";
+import { useAuth } from "../../auth";
 
 import Button from "../common/Button";
 import Input from "../common/Input";
@@ -13,12 +15,34 @@ const StyledForm = styled.form`
   align-items: center;ś
 `;
 
-const LoginFrom = () => (
-  <StyledForm>
-    <Input type="text" placeholder="nazwa gracza" />
-    <Input type="password" placeholder="hasło" />
-    <Button type="button">Zaloguj się!</Button>
-  </StyledForm>
-);
+const LoginFrom = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const { logIn } = useAuth();
+
+  const submitForm = () => {
+    logIn(username, password);
+  };
+
+  return (
+    <StyledForm>
+      <Input
+        type="text"
+        placeholder="nazwa gracza"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <Input
+        type="password"
+        placeholder="hasło"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <Button type="button" onClick={submitForm}>
+        Zaloguj się!
+      </Button>
+    </StyledForm>
+  );
+};
 
 export default LoginFrom;

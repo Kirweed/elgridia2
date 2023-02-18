@@ -45,10 +45,13 @@ export const TokenProvider = ({ children }: { children: React.ReactNode }) => {
   const logIn = async (username: string, password: string) => {
     if (!username || !password) return setIsAuthenticated(false);
     try {
-      const tokens: Tokens = await axios.post(`${BASE_URL}login/`, {
-        username,
-        password,
-      });
+      const { data: tokens }: { data: Tokens } = await axios.post(
+        `${BASE_URL}login/`,
+        {
+          username,
+          password,
+        }
+      );
       if (tokens.accessToken && tokens.refreshToken) {
         localStorage.setItem("ACCESS_TOKEN", tokens.accessToken);
         localStorage.setItem("REFRESH_TOKEN", tokens.refreshToken);

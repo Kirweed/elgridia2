@@ -1,9 +1,10 @@
-enum Colors {
+export enum Colors {
   black = "#000",
   blue = "#14213d",
   yellow = "#fca311",
   grey = "#e5e5e5",
   white = "#fff",
+  error = "#a61d11",
 }
 
 export interface GlobalTheme {
@@ -19,5 +20,6 @@ export const theme: GlobalTheme = {
     yellow: Colors.yellow,
     grey: Colors.grey,
     white: Colors.white,
+    error: Colors.error,
   },
 };
