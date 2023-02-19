@@ -1,16 +1,20 @@
 import GameObject from "./GameObject";
+import Player from "./Player";
 
 interface OverworldMapConfig {
-  gameObjects: Record<string, GameObject>;
+  npcs?: Record<string, GameObject>;
+  players: Record<string, Player>;
   src: string;
 }
 
 class OverworldMap {
-  gameObjects: Record<string, GameObject>;
+  npcs?: Record<string, GameObject>;
+  players: Record<string, Player>;
   image: HTMLImageElement;
 
   constructor(config: OverworldMapConfig) {
-    this.gameObjects = config.gameObjects;
+    this.npcs = config.npcs;
+    this.players = config.players;
     this.image = new Image();
     this.image.src = config.src;
   }
