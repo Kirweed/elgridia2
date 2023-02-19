@@ -11,7 +11,7 @@ const StyledHeader = styled.header`
   justify-content: center;
   font-weight: 700;
   font-size: 22px;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
 `;
 
 export default Header;

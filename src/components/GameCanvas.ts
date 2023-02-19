@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 const GameCanvas = styled.canvas`
-  margin: 50px auto;
+  margin-right: auto;
+  margin-left: auto;
   border: 2px solid white;
+  image-rendering: pixelated;
 `;
 
 export default GameCanvas;

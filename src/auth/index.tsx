@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 const BASE_URL = "http://localhost:8000/auth/";
@@ -24,6 +24,13 @@ const TokenContext = React.createContext<ContextInterface>({
 
 export const TokenProvider = ({ children }: { children: React.ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("ACCESS_TOKEN")) {
+      // in the future check here valid of token
+      setIsAuthenticated(true);
+    }
+  }, []);
 
   const reAuthenticate = async () => {
     const refreshToken = localStorage.getItem("REFRESH_TOKEN");

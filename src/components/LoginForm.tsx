@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { useAuth } from "../../auth";
+import { useAuth } from "../auth";
 
-import Button from "../common/Button";
-import Input from "../common/Input";
+import Button from "./common/Button";
+import Input from "./common/Input";
 
 const StyledForm = styled.form`
   display: flex;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import Button from "../common/Button";
-import Input from "../common/Input";
+import Button from "./common/Button";
+import Input from "./common/Input";
 
 const StyledForm = styled.form`
   display: flex;

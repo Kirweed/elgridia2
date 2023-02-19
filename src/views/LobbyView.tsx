@@ -1,10 +1,12 @@
+import { redirect, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useAuth } from "../../auth";
-import Button from "../../components/common/Button";
-import Header from "../../components/common/Header";
+import { useAuth } from "../auth";
+import Button from "../components/common/Button";
+import Header from "../components/common/Header";
 
 const LobbyView = () => {
   const { logOut } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -12,7 +14,13 @@ const LobbyView = () => {
       <StyledContainer>
         <h1>Jesteś zalogowany jako: xxx</h1>
         <StyledButtons>
-          <Button>Wejdź do gry</Button>
+          <Button
+            onClick={() => {
+              navigate("/game");
+            }}
+          >
+            Wejdź do gry
+          </Button>
           <Button error onClick={logOut}>
             logout
           </Button>

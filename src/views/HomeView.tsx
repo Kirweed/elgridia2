@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Button from "../../components/common/Button";
-import Header from "../../components/common/Header";
-import LoginForm from "../../components/LoginForm";
-import RegisterForm from "../../components/RegisterForm";
+import Button from "../components/common/Button";
+import Header from "../components/common/Header";
+import LoginForm from "../components/LoginForm";
+import RegisterForm from "../components/RegisterForm";
 
 const StyledContainer = styled.div`
   display: flex;
