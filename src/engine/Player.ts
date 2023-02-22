@@ -10,7 +10,7 @@ class Player extends GameObject {
 
   constructor(config: any) {
     super(config);
-    this.movingProgressRemaining = 32;
+    this.movingProgressRemaining = 0;
     this.direction = config.direction || "down";
     this.isPlayer = true;
 

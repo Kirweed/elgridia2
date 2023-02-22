@@ -1,3 +1,6 @@
+import Player from "./Player";
+import { mapEdgeToStick } from "./utils/mapShouldStickToEdge";
+
 interface GameObjectForSprite {
   x: number;
   y: number;
@@ -32,28 +35,28 @@ class Sprite {
 
     this.animations = config.animations || {
       "idle-down": [[0, 0]],
-      "idle-right": [[0, 1]],
-      "idle-up": [[0, 2]],
-      "idle-left": [[0, 3]],
+      "idle-left": [[0, 1]],
+      "idle-right": [[0, 2]],
+      "idle-up": [[0, 3]],
       "walk-down": [
         [1, 0],
         [0, 0],
         [3, 0],
         [0, 0],
       ],
-      "walk-right": [
+      "walk-left": [
         [1, 1],
         [0, 1],
         [3, 1],
         [0, 1],
       ],
-      "walk-up": [
+      "walk-right": [
         [1, 2],
         [0, 2],
         [3, 2],
         [0, 2],
       ],
-      "walk-left": [
+      "walk-up": [
         [1, 3],
         [0, 3],
         [3, 3],
@@ -63,7 +66,7 @@ class Sprite {
     this.currentAnimation = "idle-down" || config.currentAnimation;
     this.currentAnimationFrame = 0;
 
-    this.animationFrameLimit = config.animationFrameLimit || 16;
+    this.animationFrameLimit = config.animationFrameLimit || 8;
     this.animationFrameProgress = this.animationFrameLimit;
 
     this.gameObject = config.gameObject;
@@ -95,14 +98,42 @@ class Sprite {
     }
   }
 
-  draw(ctx: CanvasRenderingContext2D) {
-    const x = this.gameObject.x;
-    const y = this.gameObject.y - 16;
+  draw(
+    ctx: CanvasRenderingContext2D,
+    cameraContext: Player,
+    canvasWidth: number,
+    canvasHeight: number,
+    mapImage: HTMLImageElement
+  ) {
+    const stickMapEdgeX = mapEdgeToStick(
+      mapImage.naturalWidth,
+      cameraContext.x,
+      canvasWidth
+    );
+    const stickMapEdgeY = mapEdgeToStick(
+      mapImage.naturalHeight,
+      cameraContext.y,
+      canvasHeight
+    );
+    const stickValuesWidth = {
+      start: this.gameObject.x,
+      end: this.gameObject.x - (mapImage.naturalWidth - canvasWidth),
+    };
+    const stickValuesHeight = {
+      start: this.gameObject.y - 16,
+      end: this.gameObject.y - 16 - (mapImage.naturalHeight - canvasHeight),
+    };
+    const x = stickMapEdgeX
+      ? stickValuesWidth[stickMapEdgeX]
+      : this.gameObject.x + canvasWidth / 2 - cameraContext.x;
+    const y = stickMapEdgeY
+      ? stickValuesHeight[stickMapEdgeY]
+      : this.gameObject.y - 16 + canvasHeight / 2 - cameraContext.y;
 
     const [frameX, frameY] = this.frame;
 
     this.isLoaded &&
-      ctx.drawImage(this.image, frameX * 32, frameY * 32, 32, 32, x, y, 32, 48);
+      ctx.drawImage(this.image, frameX * 32, frameY * 48, 32, 48, x, y, 32, 48);
 
     this.udpateAnimationProgress();
   }

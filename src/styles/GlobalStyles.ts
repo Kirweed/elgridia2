@@ -6,6 +6,11 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Poppins', sans-serif;
   }
 
+  html {
+    margin: 0;
+    padding: 0;
+  }
+
   body {
     background-color: ${({ theme }) => theme.colors.black};
     color: ${({ theme }) => theme.colors.white};
