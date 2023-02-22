@@ -1,25 +1,44 @@
 import styled from "styled-components";
 
-const EqElements = Array.from(Array(12).keys());
+const EqElements = [
+  null,
+  "helmet",
+  null,
+  "ring",
+  "neckle",
+  "gloves",
+  "weapon",
+  "chestplate",
+  "shield",
+  null,
+  "pants",
+  null,
+  null,
+  "boots",
+];
 
 const Eq = () => (
   <StyledContainer>
-    {EqElements.map((element) => (
-      <EqElement />
-    ))}
+    {EqElements.map((element, index) =>
+      element ? <EqElement key={index} /> : <EqPlaceholder />
+    )}
   </StyledContainer>
 );
 
 const StyledContainer = styled.div`
-  width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 66px);
+  grid-template-columns: repeat(3, 32px);
+  place-items: center;
 `;
 
 const EqElement = styled.div`
-  width: 66px;
-  height: 66px;
+  width: 32px;
+  height: 32px;
   border: 1px solid white;
+`;
+const EqPlaceholder = styled.div`
+  width: 32px;
+  height: 32px;
 `;
 
 export default Eq;

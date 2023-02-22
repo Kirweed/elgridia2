@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const GameContainer = styled.div`
+  position: relative;
   height: 100vh;
   width: 100vw;
   margin: 0;

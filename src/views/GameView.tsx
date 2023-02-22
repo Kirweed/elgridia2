@@ -3,6 +3,7 @@ import GameCanvas from "../components/GameCanvas";
 import GameContainer from "../components/GameContainer";
 import LeftGameSidebar from "../components/LeftGameSidebar";
 import RightGameSidebar from "../components/RightGameSidebar";
+import TopCanvasOverlay from "../components/TopCanvasOverlay";
 import Overworld from "../engine/Overworld";
 
 const GameView = () => {
@@ -16,6 +17,7 @@ const GameView = () => {
   return (
     <>
       <GameContainer ref={gameContainer}>
+        <TopCanvasOverlay />
         <LeftGameSidebar />
         <GameCanvas width="1024" height="512" ref={canvas} />
         <RightGameSidebar />
