@@ -29,9 +29,14 @@ class Player extends GameObject {
     this.udpateSprite(direction);
 
     if (direction && this.movingProgressRemaining === 0) {
-      dispatch(setPosition({ x: this.x, y: this.y }));
+      console.log(this.x / 32);
+      console.log("y", this.y / 32);
       this.direction = direction;
       this.movingProgressRemaining = 32;
+    }
+
+    if (this.x % 32 === 0 && this.y % 32 === 0) {
+      dispatch(setPosition({ x: this.x, y: this.y }));
     }
   }
 

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 import Button from "./common/Button";
@@ -63,4 +64,4 @@ const UsernameAnLevelLabel = styled.div`
   align-items: center;
 `;
 
-export default LeftGameSidebar;
+export default memo(LeftGameSidebar);

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styled from "styled-components";
 import Backpack from "./Backpack";
 import Eq from "./Eq";
@@ -24,4 +25,4 @@ const StyledContainer = styled.div`
   gap: 20px;
 `;
 
-export default RightGameSidebar;
+export default memo(RightGameSidebar);

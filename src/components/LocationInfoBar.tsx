@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styled from "styled-components";
 
 interface LocationInfoBarProps {
@@ -26,4 +27,4 @@ const StyledContainer = styled.div`
   gap: 20px;
 `;
 
-export default LocationInfoBar;
+export default memo(LocationInfoBar);

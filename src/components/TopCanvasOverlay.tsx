@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styled from "styled-components";
 
 const TopCanvasOverlay = () => {
@@ -52,4 +53,4 @@ const FatigueBar = styled.div`
   transform: translateY(-50%);
 `;
 
-export default TopCanvasOverlay;
+export default memo(TopCanvasOverlay);

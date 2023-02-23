@@ -4,7 +4,6 @@ import CharacterImage from "../assets/test-sprite.png";
 import OverworldMap from "./OverworldMap";
 import Player from "./Player";
 import DirectionInput from "./DirectionInput";
-import ControlledPlayer from "./ControlledPlayer";
 import { AppDispatch } from "../store";
 
 interface OverworldConfig {
@@ -88,7 +87,7 @@ class Overworld {
   init() {
     this.resizeCanvas();
     window.addEventListener("resize", () => this.resizeCanvas.call(this));
-    const hero = new ControlledPlayer({
+    const hero = new Player({
       x: 5 * 32,
       y: 5 * 32,
       src: CharacterImage,

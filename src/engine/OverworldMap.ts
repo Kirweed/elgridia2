@@ -1,4 +1,3 @@
-import ControlledPlayer from "./ControlledPlayer";
 import GameObject from "./GameObject";
 import Player from "./Player";
 import { mapEdgeToStick } from "./utils/mapShouldStickToEdge";
@@ -11,7 +10,7 @@ interface OverworldMapConfig {
 
 class OverworldMap {
   npcs?: Record<string, GameObject>;
-  players: Record<string, Player | ControlledPlayer>;
+  players: Record<string, Player>;
   image: HTMLImageElement;
 
   constructor(config: OverworldMapConfig) {
