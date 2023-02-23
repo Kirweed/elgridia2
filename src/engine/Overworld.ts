@@ -4,10 +4,13 @@ import CharacterImage from "../assets/test-sprite.png";
 import OverworldMap from "./OverworldMap";
 import Player from "./Player";
 import DirectionInput from "./DirectionInput";
+import ControlledPlayer from "./ControlledPlayer";
+import { AppDispatch } from "../store";
 
 interface OverworldConfig {
   canvas: RefObject<HTMLCanvasElement>;
   gameContainer: RefObject<HTMLDivElement>;
+  dispatch: AppDispatch;
 }
 
 class Overworld {
@@ -16,12 +19,14 @@ class Overworld {
   ctx: CanvasRenderingContext2D | null;
   map: OverworldMap | null;
   directionInput?: DirectionInput;
+  dispatch: AppDispatch;
 
   constructor(config: OverworldConfig) {
     this.canvas = config.canvas;
     this.gameContainer = config.gameContainer;
     this.ctx = this.canvas.current?.getContext("2d") || null;
     this.map = null;
+    this.dispatch = config.dispatch;
   }
 
   startGameLoop() {
@@ -44,7 +49,7 @@ class Overworld {
         this.canvas.current.height
       );
       Object.values(this.map.players).forEach((player) => {
-        player.update(this.directionInput?.currentDirection);
+        player.update(this.dispatch, this.directionInput?.currentDirection);
         if (this.ctx && this.canvas.current && this.map)
           player.sprite.draw(
             this.ctx,
@@ -75,7 +80,7 @@ class Overworld {
 
   resizeCanvas() {
     if (this.canvas.current && this.gameContainer.current) {
-      this.canvas.current.width = this.gameContainer.current.clientWidth - 400;
+      this.canvas.current.width = this.gameContainer.current.clientWidth - 420;
       this.canvas.current.height = this.gameContainer.current.clientHeight;
     }
   }
@@ -83,7 +88,7 @@ class Overworld {
   init() {
     this.resizeCanvas();
     window.addEventListener("resize", () => this.resizeCanvas.call(this));
-    const hero = new Player({
+    const hero = new ControlledPlayer({
       x: 5 * 32,
       y: 5 * 32,
       src: CharacterImage,

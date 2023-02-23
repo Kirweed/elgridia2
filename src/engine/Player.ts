@@ -1,3 +1,5 @@
+import { AppDispatch } from "../store";
+import { setPosition } from "../store/playerSlice";
 import GameObject from "./GameObject";
 import { Directions } from "./types";
 
@@ -22,11 +24,12 @@ class Player extends GameObject {
     };
   }
 
-  update(direction?: Directions | null) {
+  update(dispatch: AppDispatch, direction?: Directions | null) {
     this.updatePosition();
     this.udpateSprite(direction);
 
     if (direction && this.movingProgressRemaining === 0) {
+      dispatch(setPosition({ x: this.x, y: this.y }));
       this.direction = direction;
       this.movingProgressRemaining = 32;
     }

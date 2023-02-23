@@ -1,9 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import Provider from "react-redux/es/components/Provider";
 import { ThemeProvider } from "styled-components";
 import App from "./App";
 import { TokenProvider } from "./auth";
 import reportWebVitals from "./reportWebVitals";
+import store from "./store";
 import GlobalStyle from "./styles/GlobalStyles";
 import { theme } from "./styles/theme";
 
@@ -15,7 +17,9 @@ root.render(
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <TokenProvider>
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </TokenProvider>
     </ThemeProvider>
   </React.StrictMode>

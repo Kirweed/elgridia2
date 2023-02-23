@@ -1,5 +1,3 @@
-import Player from "../Player";
-
 export const mapEdgeToStick = (
   mapSize: number,
   playerPosition: number,
